@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>claci</title>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(143, 150, 221);
+}
+.calci{
+    background-color: rgba(3, 2, 28, 0.86);
+    height: 300px;
+    width: 300px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 2px;
+
+
+}
+.input-box{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+align-items: center;
+}
+#box{
+    background-color: rgb(1, 1, 20);
+    color: bisque;
+    height: 50px;
+    width: 290px;
+    word-wrap: break-word;
+    text-align: right;
+    font-size: x-large;
+    padding: 5px;
+    box-shadow: 2px 2px 2px 2px black;
+    
+}
+#cb{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    
+}
+#equal{
+    grid-column: 3/5;
+}
+.button{
+    font-size: x-large;
+     box-shadow: 2px 2px 2px 2px black;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: aqua;
+
+}
+.button:hover{
+    background-color: black;
+    color: aqua;
+}
+    </style>
+</head>
+<body>    
+<div class="input-box">
+    <input type="text" id="box" placeholder="0"/>
+    </div>
+    <div id="cb">
+    <div class="calci">
+        <button class="button">AC</button>
+        <button class="button">Del</button>
+        <button class="button">%</button>
+        <button class="button">/</button>
+        <button class="button">7</button>
+        <button class="button">8</button>
+        <button class="button">9</button>
+        <button class="button">*</button>
+        <button class="button">4</button>
+        <button class="button">5</button>
+        <button class="button">6</button>
+        <button class="button">+</button>
+        <button class="button">1</button>
+        <button class="button">2</button>
+        <button class="button">3</button>
+        <button class="button">-</button>
+        <button class="button">0</button>
+        <button class="button">.</button>
+        <button class="button" id="equal">=</button>
+   </div>
+</div>
+<script  src="caci.js">
+    let input = document.getElementById('box');
+let buttons = document.querySelectorAll('button');
+let string = "";
+let arr = Array.from(buttons);
+arr.forEach(button => {
+    button.addEventListener('click', (e) => {
+        if (e.target.innerHTML == '=') {
+            string = eval(string);
+            input.value = string;
+        }
+        else if (e.target.innerHTML == 'AC') {
+            string = "";
+            input.value = string;
+        }
+        else if(e.target.innerHTML == 'Del'){
+            string=string.substring(0,string.length-1);
+            input.value=string;
+        }
+        else {
+            string += e.target.innerHTML;
+            input.value = string;
+        }
+    })
+})
+</script>
+</body>
+</html>
